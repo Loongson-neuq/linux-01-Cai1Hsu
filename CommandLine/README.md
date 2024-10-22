@@ -1,5 +1,11 @@
 # Command line assignment
 
+**⚠ ATTENTION ⚠**
+
+**⚠　注意　⚠**
+
+**常见问题及解答**：[loongson-neuq.pages.dev](https://wk1-assignment-faq-deploy.loongson-neuq.pages.dev/p/os-week1-%E4%BD%9C%E4%B8%9A%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/)
+
 ## 1. 识别 Prompt
 
 写出你从下面几个命令行 Prompt 中读出的所有信息。
@@ -13,7 +19,10 @@
 你能获取到的信息：
 
 ```
-
+Shell 当前的用户
+主机名 hostname
+工作目录
+当前输入的命令
 ```
 
 ### 2
@@ -27,7 +36,11 @@ caiyi@LAPTOP-I80ETG8J ~> git --version
 你能获取到的信息：
 
 ```
-
+Shell 当前的用户
+主机名 hostname
+工作目录
+当前输入的命令
+Shell 是 fish，以及 fish 的欢迎信息
 ```
 
 ### 3
@@ -37,7 +50,10 @@ caiyi@LAPTOP-I80ETG8J ~> git --version
 你能获取到的信息：
 
 ```
-
+Shell 当前的用户
+主机名 hostname
+工作目录
+Prompt 生成的时间
 ```
 
 ### 4
@@ -47,7 +63,9 @@ caiyi@LAPTOP-I80ETG8J ~> git --version
 你能获取到的信息：
 
 ```
-
+工作目录
+Prompt 生成的时间
+上一条命令正常返回
 ```
 
 ### 5
@@ -64,7 +82,9 @@ PS C:\Users\Caiyi Hsu>
 你能获取到的信息：
 
 ```
-
+Shell 是 PowerShell
+工作目录
+Prompt 生成的时间
 ```
 
 ### 6
@@ -77,7 +97,11 @@ $ git --version
 你能获取到的信息：
 
 ```
-
+Shell 大概率是 Git Bash
+Shell 当前的用户
+主机名 hostname
+工作目录
+当前输入的命令
 ```
 
 ## 编写命令
@@ -130,13 +154,13 @@ $ git --version
 
 ## 填空题
 
-1. 给出一个常用的打印文件内容的命令：____
+1. 给出一个常用的打印文件内容的命令：cat filenaame
 
-2. 给出一个常用的创建空文件夹的命令：____
+2. 给出一个常用的创建空文件夹的命令：mkdir dirname
 
-3. 如果我下载了一个 a.out 没有执行权限，你应该输入什么命令：____
+3. 如果我下载了一个 a.out 没有执行权限，你应该输入什么命令：chmod +x a.out
 
-4. 在 Shell 中输出 "Hello, world" 的命令：____
+4. 在 Shell 中输出 "Hello, world" 的命令：echo "Hello, world"
 
 ## 简答题
 
@@ -155,7 +179,8 @@ $ git --version
 提示：利用环境变量
 
 ```
-在这里简述你的操作
+在 Shell 启动执行的脚本里添加一行指令，将 `~/riscv-gcc/bin` 添加到 PATH 环境变量中
+根据你自己使用的 Shell 不同，这个脚本可能是 `~/.bashrc`、`~/.bash_profile`、`~/.zshrc` 等
 ```
 
 ## 可选附加作业(自学)
@@ -164,10 +189,23 @@ $ git --version
 
 使用 1 行shell命令，在当前文件夹的 a.txt 中写入 "Hello, "
 
+```bash
+# 某些 Shell 需要 -n 参数来阻止换行
+echo -n "Hello, " > a.txt
+```
+
 ### 2
 
 使用 1 行shell命令，在上一题的的 a.txt 中追加 "world!"
 
+```bash
+echo -n "world!" >> a.txt
+```
+
 ### 3
 
 同过软链接的方式解决[简答题](#简答题)的内容
+
+```
+将 `~/riscv-gcc/bin` 里的可执行文件链接到已经在 PATH 中的文件夹中，例如 `/usr/bin`。考虑到工具链本身是在用户目录下，尽量不要链接到一个系统文件夹下，否则其他用户可能会受到影响。
+```
